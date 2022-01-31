@@ -3,4 +3,30 @@ require_relative '../setup'
 puts "Exercise 1"
 puts "----------"
 
-# Your code goes below here ...
+# create active record models
+# (or and add this to the store.rb under the models folder)
+class Stores < ActiveRecord::Base
+end
+
+Burnaby = Stores.create(
+  name: "Burnaby",
+  annual_revenue: 300000,
+  mens_apparel: true,
+  womens_apparel: true
+)
+
+Richmond = Stores.create(
+  name: "Richmond",
+  annual_revenue: 1260000,
+  mens_apparel: false,
+  womens_apparel: true
+)
+
+Gastown = Stores.create(
+  name: "Gastown",
+  annual_revenue: 190000,
+  mens_apparel: true,
+  womens_apparel: false
+)
+
+puts Stores.count(:all)
