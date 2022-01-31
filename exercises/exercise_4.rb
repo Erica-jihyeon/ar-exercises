@@ -33,3 +33,9 @@ store = Stores.create(
 @mens_stores.each do |s|
   puts "store name: #{s.name} | annual revenue: #{s.annual_revenue}"
 end
+
+@w_1M_stores = Stores.where(womens_apparel: true, annual_revenue: 1000000..Float::INFINITY)
+
+@w_1M_stores.each do |s|
+  puts "store name: #{s.name} | annual revenue: #{s.annual_revenue}"
+end
