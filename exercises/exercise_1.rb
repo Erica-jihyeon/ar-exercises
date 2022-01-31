@@ -8,25 +8,25 @@ puts "----------"
 class Stores < ActiveRecord::Base
 end
 
-Burnaby = Stores.create(
+store = Stores.create(
   name: "Burnaby",
   annual_revenue: 300000,
   mens_apparel: true,
   womens_apparel: true
 )
 
-Richmond = Stores.create(
+store = Stores.create(
   name: "Richmond",
   annual_revenue: 1260000,
   mens_apparel: false,
   womens_apparel: true
 )
 
-Gastown = Stores.create(
+store = Stores.create(
   name: "Gastown",
   annual_revenue: 190000,
   mens_apparel: true,
   womens_apparel: false
 )
 
-puts Stores.count(:all)
+puts "total stores are #{Stores.count(:all)}"
