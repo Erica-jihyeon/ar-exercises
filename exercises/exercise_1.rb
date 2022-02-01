@@ -13,9 +13,17 @@ class Store < ActiveRecord::Base
 
   def apparel_validate
     if mens_apparel == false && womens_apparel == false
-      errors.add(:mens_apparel, :womens_apparel)
+      errors.add(:mens_apparel, "Apparel can't be both false")
+      errors.add(:womens_apparel, "Apparel can't be both false")
+    elsif mens_apparel == nil || womens_apparel == nil
+      if mens_apparel == nil
+        errors.add(:mens_apparel, "can't be blank")
+      elsif womens_apparel == nil
+        errors.add(:womens_apparel, "can't be blank")
+      end
     end
   end
+  
 end
 
 class Employee < ActiveRecord::Base
