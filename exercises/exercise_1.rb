@@ -7,10 +7,23 @@ puts "----------"
 # (or and add this to the store.rb under the models folder)
 class Store < ActiveRecord::Base
   has_many :employees
+  validates :name, length: { minimum: 3}
+  validates :annual_revenue, numericality: { only_integer: true, greater_than: 0}
+  validate :apparel_validate
+
+  def apparel_validate
+    if mens_apparel == false && womens_apparel == false
+      errors.add(:mens_apparel, :womens_apparel)
+    end
+  end
 end
 
 class Employee < ActiveRecord::Base
   belongs_to :store #singular
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :hourly_rate, inclusion: { in: 40...200}, numericality: { only_integer: true }
+  validates :store_id, presence: true
 end
 
 store = Store.create(
